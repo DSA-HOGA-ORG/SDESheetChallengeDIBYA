@@ -9,6 +9,7 @@ pure LeetCode `Solution` class. All test cases live in `main.py` / `main.cpp` on
 .
 ├── main.py                 # Python runner — solutions imported, test cases here
 ├── main.cpp                # C++ runner — solutions included, test cases here
+├── start_day.py            # daily helper — scaffold, register, log, commit, push
 ├── Arrays/
 │   ├── LinearScan/
 │   ├── TwoPointers/
@@ -41,6 +42,33 @@ pure LeetCode `Solution` class. All test cases live in `main.py` / `main.cpp` on
 
 ## Workflow
 
+### Daily helper script (`start_day.py`)
+
+One command scaffolds the solution file, registers it in the runner, appends the
+structured entry to `logs/daily_log.md`, and commits + pushes to GitHub:
+
+```sh
+python start_day.py set-matrix-zeroes \
+    --topic Arrays --subtopic LinearScan --method setZeroes
+
+python start_day.py merge-two-sorted-lists --lang cpp \
+    --topic LinkedList --subtopic FastAndSlowPointers --link https://leetcode.com/problems/merge-two-sorted-lists/
+```
+
+Flags:
+- `--method` — Solution method name (defaults to camelCase of the slug)
+- `--lang python|cpp` — default `python`
+- `--link URL` — defaults to the LeetCode URL derived from the slug
+- `--status Solved|Unsolved|Need Review` — tick the status box in the log
+- `--no-git` — create/register/log only, skip commit + push
+
+The script reuses today's day block if it exists, otherwise starts a new one
+(`## Day NN — Weekday, DD Mon YYYY`) and bumps the log's day/problem counters.
+If no git identity is configured, it sets a repo-local `DSA-HOGA-ORG` identity
+so commits push with the same author as the GitHub Action.
+
+### Manual flow
+
 1. Tell opencode the **problem name**, **language** (python / cpp), and the
    **method name**. It will:
    - create the solution file in the right `Topic/Subtopic/` folder
@@ -48,7 +76,8 @@ pure LeetCode `Solution` class. All test cases live in `main.py` / `main.cpp` on
      in `main.cpp` for C++)
    - log the problem in `logs/daily_log.md`
 2. Fill in the solution, then run the matching runner.
-3. Commit + push daily — done automatically by the GitHub Actions workflow.
+3. Commit + push daily — done automatically by the GitHub Actions workflow
+   (or one `python start_day.py <slug> ...` call above).
 
 ### main.py
 
@@ -108,4 +137,4 @@ Repo → Settings → Actions → General → Workflow permissions → "Read and
 ## Regenerating the C++ binary
 
 `./main`, `a.out`, `__pycache__/`, etc. are gitignored. Rebuild with
-`g++ -std=c++17 main.cpp -o main`.
+`g++ -std=c++17 main.cpp -o main`.# SDESheetChallengeDIBYA
