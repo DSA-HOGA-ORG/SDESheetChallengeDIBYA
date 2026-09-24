@@ -18,10 +18,15 @@ from typing import Any
 
 # "problem-name": ("topic.subtopic", "module_name", "method_name")
 KNOWN_PROBLEMS = {
+    "majority-element": ("Arrays.LinearScan", "MajorityElement", "majorityElement"),
 }
 
 # "problem-name": [(input_args_tuple, expected), ...]
 TEST_CASES: dict[str, list[tuple[tuple[Any, ...], Any]]] = {
+    "majority-element": [
+        (([3, 2, 3],), 3),
+        (([2, 2, 1, 1, 1, 2, 2],), 2),
+    ],
 }
 
 
