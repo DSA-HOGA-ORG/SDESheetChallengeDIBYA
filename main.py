@@ -22,6 +22,8 @@ KNOWN_PROBLEMS = {
     "majority-element-ii": ("Arrays.LinearScan", "MajorityElementII", "majorityElement"),
     "kadanes-algorithm": ("Arrays.LinearScan", "KadanesAlgorithm", "maxSubArray"),
     "maximum-product-subarray": ("Arrays.LinearScan", "MaximumProductSubarray", "maxProduct"),
+    "sort-colors": ("Arrays.TwoPointers", "SortColors", "sortColors"),
+    "two-sum": ("Hashing.HashingAndPrefixSums", "TwoSum", "twoSum"),
 }
 
 # "problem-name": [(input_args_tuple, expected), ...]
@@ -43,6 +45,15 @@ TEST_CASES: dict[str, list[tuple[tuple[Any, ...], Any]]] = {
     "maximum-product-subarray": [
         (([2, 3, -2, 4],), 6),
         (([-2, 0, -1],), 0),
+    ],
+    "sort-colors": [
+        (([2, 0, 2, 1, 1, 0],), [0, 0, 1, 1, 2, 2]),
+        (([2, 0, 1],), [0, 1, 2]),
+    ],
+    "two-sum": [
+        (([2, 7, 11, 15], 9), [0, 1]),
+        (([3, 2, 4], 6), [1, 2]),
+        (([3, 3], 6), [0, 1]),
     ],
 }
 
